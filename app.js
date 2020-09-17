@@ -9,6 +9,9 @@ const errorHandlers = require('./handlers/errorHandlers');
 app.use(errorHandlers.notFound);
 app.use(errorHandlers.mongooseErrors);
 
+// import routes
+app.use(require('./routes/user'));
+
 if (process.env.ENV === 'DEVELOPMENT') {
     app.use(errorHandlers.developmentErrors);
 } else {
