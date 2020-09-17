@@ -15,6 +15,14 @@ exports.register = async (req, res) => {
         throw 'Password must be at least 6 characters long.'
     }
 
+    const userExists = await User.findOne({
+        email,
+    });
+
+    if (userExists) {
+        throw "user with same email already exists";
+    }
+
     const user = new User({ name, email, password });
 
     await user.save();
