@@ -10,7 +10,8 @@ app.use(errorHandlers.notFound);
 app.use(errorHandlers.mongooseErrors);
 
 // import routes
-app.use(require('./routes/user'));
+app.use('/user', require('./routes/user'));
+app.use('/chatroom', require('./routes/chatroom'));
 
 if (process.env.ENV === 'DEVELOPMENT') {
     app.use(errorHandlers.developmentErrors);
