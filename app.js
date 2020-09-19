@@ -4,6 +4,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// import cors package
+app.use(require('cors')());
+
 // setup error handlers
 const errorHandlers = require('./handlers/errorHandlers');
 app.use(errorHandlers.notFound);
