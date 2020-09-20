@@ -1,22 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 
-const LoginPage = (props) => {
+const RegisterPage = (props) => {
+    const nameRef = React.createRef();
     const emailRef = React.createRef();
     const passwordRef = React.createRef();
 
-    const loginUser = () => {
+    const registerUser = () => {
+        const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
         axios
-            .post('http://localhost:5000/user/login', {
+            .post('http://localhost:5000/user/register', {
+                name,
                 email,
                 password,
             })
             .then((res) => {
-                localStorage.setItem('CC_Token', res.data.token);
-                props.history.push('/dashroad');
+                props.history.push('/login');
             })
             .catch((err) => {
                 if (
@@ -33,9 +35,19 @@ const LoginPage = (props) => {
     return (
         <div>
             <div>
-                Login
+                Register
             </div>
             <div>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input 
+                        type="name"
+                        name="name"
+                        id="name"
+                        placeholder="Your Name"
+                        ref={nameRef}
+                    />
+                </div>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
@@ -56,10 +68,10 @@ const LoginPage = (props) => {
                         ref={passwordRef}
                     />
                 </div>
-                <button onClick={loginUser}>Login</button>
+                <button onClick={registerUser}>Register</button>
             </div>
         </div>
     )
 }
 
-export default LoginPage;
+export default RegisterPage;
