@@ -6,6 +6,8 @@ import LoginPage from './components/pages/login_page';
 import RegisterPage from './components/pages/register_page';
 import DashboardPage from './components/pages/dashboard';
 import IndexPage from './components/pages/index';
+import ChatroomPage from './components/pages/chatroom';
+import Chatroom from './components/pages/chatroom';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route exact path="/register" component={RegisterPage}></Route>
           <Route exact path="/dashboard" component={DashboardPage}></Route>
           <Route exact path="/" component={IndexPage}></Route>
+          <Route exact path="/chatroom/:id" component={ChatroomPage}></Route>
         </Switch>
       </BrowserRouter>
     </div>
